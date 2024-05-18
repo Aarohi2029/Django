@@ -1,0 +1,4 @@
+django works on MVT.
+M=MODELS
+V=VIEWS
+T=TEMPLATES

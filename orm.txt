@@ -1,0 +1,5 @@
+ORM QUERY:
+
+fullform: object relational mapping
+
+1)contact.objects.create()
