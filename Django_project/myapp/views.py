@@ -141,3 +141,21 @@ def new_password(request):
 	else:
 		msg="New Password & Confirm Password Does Not Matched"
 		return render(request,'new-password.html',{'msg':msg})
+
+def profile(request):
+	user=User.objects.get(email=request.session['email'])
+	if request.method=="POST":
+		user.fname=request.POST['fname']
+		user.lname=request.POST['lname']
+		user.mobile=request.POST['mobile']
+		user.address=request.POST['address']
+		try:
+			user.profile_picture=request.FILES['profile_picture']
+		except:
+			pass
+		user.save()
+		msg="Profile Updated Successfully "
+		request.session['profile_picture']=user.profile_picture.url
+		return render(request, 'profile.html',{'user':user,'msg':msg})
+	else:
+		return render(request, 'profile.html',{'user':user})	
