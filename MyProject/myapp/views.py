@@ -207,8 +207,16 @@ def seller_product_details(request,pk):
 
 
 def product_details(request,pk):
+	wishlist_flag=False
+	user = User.objects.get(email=request.session['email'])
 	product=Product.objects.get(pk=pk)
-	return render(request,'product-details.html',{'product':product})
+	try:
+		wishlist.objects.get(user=user,product=product)
+		wishlist_flag=True
+
+	except:
+		pass
+	return render(request,'product-details.html',{'product':product,'wishlist_flag':wishlist_flag})
 
 def seller_product_edit(request,pk):
 

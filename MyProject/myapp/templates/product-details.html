@@ -36,10 +36,11 @@
                      <div class="option_container">
                         <div class="options">
                            {% if request.session.email %}
-                           <a href="{% url 'seller-product-edit' pk=product.pk %}" class="option2">
-                         Add to Cart
-                           </a>
-                            <a href="{% url 'add-to-wishlist' pk=product.pk %}" class="option2">
+                              <a href="{% url 'seller-product-edit' pk=product.pk %}" class="option2">
+                            Add to Cart
+                              </a>
+                                
+                              <a href="{% url 'add-to-wishlist' pk=product.pk %}" class="option2">
                          Add to Wishlist
                            </a>
                            {% else %}

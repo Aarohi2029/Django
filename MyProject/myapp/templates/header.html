@@ -23,9 +23,8 @@
       <!-- responsive style -->
       <link href="{% static 'css/responsive.css' %}" rel="stylesheet" />
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
    </head>
    <body>
       
@@ -77,15 +76,15 @@
                               <a class="nav-link" href="{% url 'login' %}">Login</a>
                            </li>
                         {% endif %}
-                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <li class="nav-item ">
-                            <a href=""><i class="fa-solid fa fa-cart-shopping"></i></a>
+
+                        <li class="nav-item">
+                         <a href="" style="margin-top: 10px;"><i class="glyphicon glyphicon-shopping-cart"></i></a>        
                         </li>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <li class="nav-item ">
-                            <a href="{% url 'wishlist' %}"><i class="fa-solid fa-heart"></i></a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <li class="nav-item">
+                         <a href="{% url 'wishlist' %}"><i class="glyphicon glyphicon-heart"></i></a>        
                         </li>
-                       
+                        
                      </ul>
                   </div>
                </nav>
