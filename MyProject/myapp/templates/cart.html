@@ -1,0 +1,116 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+   <head>
+      <script src="https://js.stripe.com/v3/"></script>
+   </head>
+   <body class="sub_page">
+      <div class="hero_area">
+      </div>
+      <!-- inner page section -->
+      <section class="inner_page_head">
+         <div class="container_fuild">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="full">
+                     <h3>Cart Grid</h3>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <!-- end inner page section -->
+      <!-- product section -->
+      <section class="product_section layout_padding">
+         <div class="container">
+            <div class="heading_container heading_center">
+               <h2>
+                  {% if carts %}
+                     My <span>Cart</span>
+                  {% else %}
+                     No Products In <span>Cart</span>
+                  {% endif %}
+               </h2>
+            </div>
+            <div class="row">
+               {% for i in carts %}
+               <div class="col-sm-6 col-md-4 col-lg-3">
+                  <div class="box">
+                     
+                     <div class="img-box">
+                        <img src="{{i.product.product_image.url}}" alt="">
+                     </div>
+                     <div class="detail-box">
+                        <h5>
+                           {{i.product.product_category}}'s {{i.product.product_sub_category}}
+                        </h5>
+                        <h6>
+                           {{i.product.product_price}}
+                        </h6>
+                     </div>
+                     <div class="detail-box">
+                        <form name="change_qty" method="post" action="{% url 'change-qty' pk=i.pk %}">
+                           {% csrf_token %}
+                           Qty : <input type="number" name="product_qty" value="{{i.product_qty}}" min="1" max="10" onchange="this.form.submit();">
+                           
+                        </form>
+                        
+                     </div>
+                     <div class="detail-box">
+                        <h6>
+                           Total Price : {{i.total_price}}
+                        </h6>
+                     </div>
+                  </div>
+               </div>
+               {% endfor %}
+            </div>
+            
+         </div>
+
+      </section>
+      <h1>Net Price : {{net_price}}</h1>
+      <form method="post">
+         <input type="hidden" id="net_price" name="amount" value="{{net_price}}">
+         <button type="button" class="btn btn-lg btn-primary" id="checkout-button">Checkout</button>
+     </form>
+
+<script type="text/javascript">
+
+var stripe = Stripe('pk_test_51MshH6SJuXwPfjjrrgxJ5tubbOgYAhRrqNcd4RDUSq1peWpIMZrjhIiTncSUWO9u6byeDf4KxdZPkFD4hU55mVOg00aRL5RT8x');
+var checkoutButton = document.getElementById('checkout-button');
+
+checkoutButton.addEventListener('click', function() { 
+ fetch('/create-checkout-session/', {
+ method: 'POST',
+    headers:{
+        'Accept': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest', //Necessary to work with request.is_ajax()
+
+    },
+    body: JSON.stringify({'post_data':'{{net_price}}'})
+ })
+ .then(function(response) {
+ return response.json();
+ })
+ .then(function(session) {
+ return stripe.redirectToCheckout({ sessionId: session.id });
+ })
+ .then(function(result) {
+ // If `redirectToCheckout` fails due to a browser or network
+ // error, you should display the localized error message to your
+ // customer using `error.message`.
+ if (result.error) {
+ alert(result.error.message);
+ }
+ })
+ .catch(function(error) {
+ console.error('Error:', error);
+ });
+ });
+ </script>
+   </body>
+</html>
+{% endblock %}

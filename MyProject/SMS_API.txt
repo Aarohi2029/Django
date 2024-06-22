@@ -1,7 +1,0 @@
-import requests
-
-			url = "https://www.fast2sms.com/dev/bulkV2"
-			querystring = {"authorization":"V0Y4M5qwXZRJy7nejTPb6aGQSC2is3urmlI1kpKzW9OAFcHvgxxoIRD1BtL7vQ3MGqpgYd8u6Xk9sN0h","variables_values":otp,"route":"otp","numbers":mobile}
-			headers = {'cache-control': "no-cache"}
-			response = request.request("GET", url, headers=headers, params=querystring)
-			print(response.text)

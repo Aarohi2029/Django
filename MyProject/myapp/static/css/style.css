@@ -67,6 +67,7 @@ h2 {
     background: #f7444e;
     margin: 10px auto 10px;
 }
+
 .heading_container h2 span {
   color: #f7444e;
 }
@@ -93,7 +94,6 @@ a:hover,
 a:focus {
   color: initial;
 }
-
 
 .btn,
 .btn:focus {
@@ -307,7 +307,6 @@ a:focus {
   color: #f7444e;
 }
 
-
 .slider_section .img-box img {
   width: 100%;
 }
@@ -331,7 +330,6 @@ a:focus {
   border-radius: 100%;
   opacity: 1;
 }
-
 
 .slider_section .carousel-indicators li.active {
   width: 20px;
@@ -371,12 +369,6 @@ a:focus {
     overflow: hidden;
     box-shadow: 5px 5px 5px -5px rgba(0,0,0,.2);
     border: solid #fff 10px;
-}
-.fa{
-  color: #020408;
-}
-.fa-heart{
-  color: #a63f3f;
 }
 
 .product_section .box .img-box {
