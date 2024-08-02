@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Form</title>
+</head>
+<body>
+  {% if request.session.femail %}
+    <h2>Registration Form {{ request.session.fac_name }} </h2>
+  {% else %}
+    <h2>Registration Form </h2>
+  {% endif %}
+  <form action="{% url 'add-to-student' %}" method="post">
+    {% csrf_token %}
+    <label for="fname">First Name:</label>
+    <input type="text" id="fname" name="fname" required><br><br>
+
+    <label for="lname">Last Name:</label>
+    <input type="text" id="lname" name="lname" required><br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required><br><br>
+
+    <label for="cpassword">Confirm Password:</label>
+    <input type="password" id="cpassword" name="cpassword" required><br><br>
+
+    <label for="address">Address:</label>
+    <textarea id="address" name="address" required></textarea><br><br>
+
+    <label for="gender">Gender:</label>
+    <input type="radio" id="male" name="gender" value="male">
+    <label for="male">Male</label>
+    <input type="radio" id="female" name="gender" value="female">
+    <label for="female">Female</label><br><br>
+
+    <label for="qualification">Qualification:</label>
+    <select id="qualification" name="qualification">
+      <option value="ssc">SSC</option>
+      <option value="hsc">HSC</option>
+      <option value="graduate">Graduate</option>
+      <option value="postgraduate">Postgraduate</option>
+    </select><br><br>
+
+    <input type="submit" value="Register">
+  </form>
+</body>
+</html>

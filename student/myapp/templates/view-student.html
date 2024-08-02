@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>view-student</title>
+</head>
+<body>
+  <h2>index</h2>
+    {% if msg %}
+      <b style="color: blue;">{{ msg }}</b>
+    {% endif %}
+    <table border="1px solid black" class="responsive-centered-table" style="width: 100%; padding: 10px; border-collapse: collapse;">
+        <thead>
+          <tr>
+            <th>First Name</th>  <th>Last Name</th>
+            <th>Email</th>  
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in student %}
+          <tr>
+            <td>{{ i.fname }}</td>  <td>{{ i.lname }}</td>
+            <td>{{ i.email }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+</body>
+</html>

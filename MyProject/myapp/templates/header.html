@@ -25,6 +25,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
    </head>
+   <style>
+      .nav-item a{
+      color: black;
+
+      }
+         .nav-item:hover a{
+      color: red;
+
+      }
+   </style>
    <body>
       
          <!-- header section strats -->
@@ -78,7 +88,7 @@
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         {% if request.session.email %}
                         <li class="nav-item" style="margin-top: 5px;">
-                           <a href="{% url 'cart' %}"><i class="glyphicon glyphicon-shopping-cart">({{request.session.cart_count}})</i></a>
+                           <a href="{% url 'cart' %}"><i class=" glyphicon glyphicon-shopping-cart">({{request.session.cart_count}})</i></a>
                         </li>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <li class="nav-item" style="margin-top: 5px;">

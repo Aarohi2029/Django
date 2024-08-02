@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+</head>
+<body>
+
+    <h2>index</h2>
+    {% if msg %}
+      <b style="color: blue;">{{ msg }}</b>
+    {% endif %}
+    
+    {% if request.session.femail %}
+        <h2>{{ request.session.femail}}</h2>
+        
+        <a href="{% url 'add-student' %}">Add-student</a> 
+        <a href="{% url 'view-student' %}">view-student</a>        
+        <a href="{% url 'logout' %}" class="btn btn-primary">Logout</a>
+      {% else %}
+        <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
+      {% endif %}
+
+</body>
+</html>

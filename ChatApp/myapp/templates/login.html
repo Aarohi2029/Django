@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+{% if request.session.email %}
+		<a href="{% url 'logout' %}">Logout</a>
+	{% else %}
+		<a href="{% url 'signup' %}">Sign Up</a> || <a href="{% url 'login' %}">Login</a>
+	{% endif %}
+	{% if msg %}
+		<b style="color: blue;">{{msg}}</b>
+	{% endif %}
+<form method="post" action="{% url 'login' %}">
+	{% csrf_token %}
+	<table>
+		
+		<tr>
+			<td>Email</td>
+			<td><input type="text" name="email"></td>
+		</tr>
+		
+		<tr>
+			<td>Password</td>
+			<td><input type="password" name="password"></td>
+		</tr>
+		
+		<tr>
+			<td colspan="2" align="center">
+				<input type="submit" value="Login">
+			</td>
+		</tr>
+	</table>
+</form>
+</body>
+</html>

@@ -1,0 +1,13 @@
+reg
+
+fname
+lname
+add
+mobile
+email
+gender
+eduction qualification
+pass
+cpass
+
+login

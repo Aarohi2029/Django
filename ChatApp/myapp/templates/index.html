@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	{% if request.session.email %}
+		<a href="{% url 'logout' %}">Logout({{request.session.fname}})</a>
+		<br><br>
+		{% for i in users %}
+			{{i.fname}} {{i.lname}}
+				{% for j in friends %}
+					{% if i.pk == j.friend.pk %}
+						{% if j.status == True %}
+							<a href="">Chat</a><br><br>
+							{{break}}
+						{% endif %}
+					{% else %}
+						<a href="{% url 'add-friend' pk=i.pk %}">Add Friend</a><br><br>
+					{% endif %}
+				{% endfor %}
+		{% endfor %}
+	{% else %}
+		<a href="{% url 'signup' %}">Sign Up</a> || <a href="{% url 'login' %}">Login</a>
+	{% endif %}
+
+</body>
+</html>
